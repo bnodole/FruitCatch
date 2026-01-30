@@ -8,25 +8,32 @@ public class FruitsDrop : MonoBehaviour
 
     int barrelIndex;
     int fruitIndex;
-    float spawnTime;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        spawnTime = 5;
-    }
 
-    // Update is called once per frame
+    float spawnTimer = 0f;
+    float spawnInterval = 5f;       // Starting delay
+    float minSpawnInterval = 0.5f;  // Minimum delay between drops
+    float accelerationRate = 0.0005f; // How quickly the spawn interval decreases over time
+
     void Update()
     {
-        spawnTime -= Time.deltaTime;
-        if(spawnTime <= 0)
+        // Reduce the spawn interval smoothly over time
+        spawnInterval -= accelerationRate * Time.deltaTime;
+        spawnInterval = Mathf.Max(spawnInterval, minSpawnInterval); // Clamp so it doesn't go too fast
+
+        // Countdown to next spawn
+        spawnTimer -= Time.deltaTime;
+        if (spawnTimer <= 0f)
         {
+            // Pick random barrel and fruit
             barrelIndex = Random.Range(0, barrels.Length);
             fruitIndex = Random.Range(0, fruits.Length);
+
+            // Spawn fruit
             Transform spawnFruit = Instantiate(fruits[fruitIndex], barrels[barrelIndex]);
             spawnFruit.position = barrels[barrelIndex].position - new Vector3(0, 1, 0);
-            spawnTime = 5;
+
+            // Reset timer for next drop
+            spawnTimer = spawnInterval;
         }
     }
-
 }

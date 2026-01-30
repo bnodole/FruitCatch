@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
         highestScore = PlayerPrefs.GetInt("HighScore");
         backgroundMusic.volume = PlayerPrefs.GetInt("BgSound");
         sound.volume = PlayerPrefs.GetInt("OtherSound");
+        highScore.text = highestScore.ToString();
     }
     public void ScoreManager()
     {
