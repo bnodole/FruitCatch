@@ -1,0 +1,42 @@
+{
+  "name": "com.unity.cloud.gltfast",
+  "version": "6.15.1",
+  "displayName": "Unity glTFast",
+  "description": "Use glTFast to import and export glTF 3D files efficiently at runtime or in the Editor",
+  "unity": "2022.3",
+  "keywords": [
+    "mesh",
+    "gltf",
+    "asset",
+    "format",
+    "draco",
+    "ktx",
+    "basis",
+    "universal",
+    "basisu"
+  ],
+  "dependencies": {
+    "com.unity.modules.jsonserialize": "1.0.0",
+    "com.unity.modules.unitywebrequest": "1.0.0",
+    "com.unity.mathematics": "1.2.6",
+    "com.unity.burst": "1.8.24",
+    "com.unity.collections": "1.2.4"
+  },
+  "relatedPackages": {
+    "com.unity.cloud.gltfast.tests": "0.0.0"
+  },
+  "unityRelease": "67f2",
+  "_upm": {
+    "changelog": "### Added\n- Assigned glTF logo to [GltfEntityAsset](xref:GLTFast.GltfEntityAsset) component.\n- (Test) Test glTF asset *CylinderWithMaterial* that's procedurally generated at runtime.\n- (Test) Tests for documentation examples.\n- (Test) `OpenGltfScene` improvements.\n  - Refactored to use custom load method.\n  - Load method option to choose between loading from file or URI.\n  - Scene index option.\n  - Informative console logs with file path/URI and load time.\n  - Now works at runtime as well (without file dialog).\n  - Re-positions camera so that the loaded glTF scene is framed.\n  - Can load via [EntityInstantiator](xref:GLTFast.EntityInstantiator).\n\n### Changed\n- (Entities) Entities of a scene are grouped via `LinkedEntityGroup`.\n- (Performance) Import mesh indices as unsigned integers and don't convert to signed integers anymore.\n- (Performance) Limited copy buffer size, so that garbage allocations do not scale with glTF-Binary content size anymore (when loading from file or `Stream`).\n- (Performance) Large glTF-Binary content is now loaded into memory in smaller chunks, which keeps the frame rate smooth (when loading from file or `Stream`).\n- (Performance) Shift loading glTF-Binary from stream to memory to a background thread, if it won't likely fit within the current update loop.\n- (Performance) glTF-Binary buffers are not initialized with zeros before population.\n- [meshoptimizer mesh compression for Unity] minimum required version was raised to 0.2.0-exp.1.\n- (Test) Updated tests dependency Graphics Test Framework (com.unity.testframework.graphics) to 8.13.1-exp.1.\n\n### Fixed\n- Returning a proper error for glTF-Binary with a content length shorter than what's depicted in the header.\n- NotSupportedException when loading a glTF-Binary file with excess length (fixes [#786](https://github.com/atteneder/glTFast/issues/786)).\n- (Documentation) Clarified how to add export shader variants.\n- (Test) Fixed generated test glTFs by exporting them in synchronous mode (only available internally).\n- (Importer) Synchronization Context is now properly reset after an exception (thanks [Bruno](https://github.com/bruno1308) for [#29](https://github.com/Unity-Technologies/com.unity.cloud.gltfast/pull/29)).\n- Removed compiler warning when `GLTFAST_SAFE` scripting define is active.\n- (Test) Stabilize tests by executing `LogAssert.Expect` before actual tests.\n- (Entities) Sub-meshes are rendered properly.\n- (Test) Tests destroy the glTF entities before disposing meshes/materials to avoid batch rendering errors."
+  },
+  "upmCi": {
+    "footprint": "b1b10c8b9cb4f72a6993d7362332eafabfe0b445"
+  },
+  "documentationUrl": "https://docs.unity3d.com/Packages/com.unity.cloud.gltfast@6.15/manual/index.html",
+  "repository": {
+    "url": "https://github.cds.internal.unity3d.com/unity/com.unity.cloud.gltfast.src.git",
+    "type": "git",
+    "revision": "79f587fa95125fcc09e8490eda30cca1baca5582"
+  },
+  "_fingerprint": "9ca01fd33b62ec77492349305dd6e4b3f48d8487"
+}
