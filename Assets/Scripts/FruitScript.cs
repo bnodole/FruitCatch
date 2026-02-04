@@ -30,7 +30,6 @@ public class FruitScript : MonoBehaviour
             else
             {
                 gameManager.ScoreManager();
-                this.GetComponent<Rigidbody>().mass = 0;
                 isScored = true;
                 Destroy(this.gameObject, 2);
             }

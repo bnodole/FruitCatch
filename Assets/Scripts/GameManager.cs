@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI deathScore;
     public TextMeshProUGUI highScore;
     public int highestScore;
+    public static int deathCount;
 
     public GameObject gameUI;
     public GameObject pauseUI;
@@ -23,6 +24,17 @@ public class GameManager : MonoBehaviour
     public AudioSource sound;
     public AudioClip destroySound;
     public Slider soundSlider;
+
+    public UnityAdsManager unityAdsManager;
+
+    private void Awake()
+    {
+        if (unityAdsManager != null)
+        {
+            unityAdsManager.Initialize();
+            unityAdsManager.LoadNonRewardedAd();
+        }
+    }
 
     private void Start()
     {
@@ -58,6 +70,13 @@ public class GameManager : MonoBehaviour
     public void Death()
     {
         Time.timeScale = 0f;
+        deathCount++;
+        if(deathCount == 2)
+        {
+            Debug.Log("Ad Showing part");
+            unityAdsManager.ShowNonRewardedAd();
+            deathCount = 0;
+        }
         CheckHighScore();
         StartCoroutine(DeathWait());
         

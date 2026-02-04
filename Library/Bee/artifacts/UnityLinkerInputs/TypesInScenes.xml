@@ -1,9 +1,11 @@
 <linker>
 	<assembly fullname="Assembly-CSharp">
 		<type fullname="CartScript" preserve="nothing"/>
+		<type fullname="FPSDisplay" preserve="nothing"/>
 		<type fullname="FruitScript" preserve="nothing"/>
 		<type fullname="FruitsDrop" preserve="nothing"/>
 		<type fullname="GameManager" preserve="nothing"/>
+		<type fullname="UnityAdsManager" preserve="nothing"/>
 	</assembly>
 	<assembly fullname="Unity.InputSystem">
 		<type fullname="UnityEngine.InputSystem.InputActionAsset" preserve="nothing"/>
@@ -82,6 +84,10 @@
 		<type fullname="TMPro.TMP_Settings" preserve="nothing"/>
 		<type fullname="TMPro.TMP_SpriteAsset" preserve="nothing"/>
 		<type fullname="TMPro.TMP_StyleSheet" preserve="nothing"/>
+	</assembly>
+	<assembly fullname="UnityEngine.Advertisements">
+		<type fullname="UnityEngine.Advertisements.Placeholder" preserve="nothing"/>
+		<type fullname="UnityEngine.Advertisements.Platform.Editor.BannerPlaceholder" preserve="nothing"/>
 	</assembly>
 	<assembly fullname="UnityEngine">
 		<type fullname="UnityEditor.Animations.AnimatorController" preserve="nothing"/>
